@@ -104,6 +104,11 @@ function hideCard(card) {
   card.removeClass('open show');
 }
 
+function clearCards() {
+  $('.card').remove();
+  openCard = null;
+}
+
 function matchCard(card) {
   card.removeClass('open show').addClass('match');
 }
