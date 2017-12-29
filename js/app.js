@@ -21,14 +21,17 @@ var moveCount = 0;
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-shuffle(cardList);
-var cardHTML = [];
+dealCards();
+function dealCards() {
+  shuffle(cardList);
+  var cardHTML = [];
 
-cardList.forEach(function(card) {
-  cardHTML.push($('<li class="card"><i class="fa fa-' + card + '"></i></li>'));
-});
+  cardList.forEach(function(card) {
+    cardHTML.push($('<li class="card"><i class="fa fa-' + card + '"></i></li>'));
+  });
 
-$('.deck').append(cardHTML);
+  $('.deck').append(cardHTML);
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
