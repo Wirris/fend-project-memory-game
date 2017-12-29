@@ -109,3 +109,15 @@ function incrementMoveCounter() {
 function gameSuccess() {
   $('#successModal').modal();
 }
+
+$('.restart').on('click', restartGame);
+
+function restartGame() {
+  $('#successModal').modal('hide');
+  $('.moves').text('0');
+  window.clearInterval(timer);
+  timer = null;
+  secondsPassed = 0;
+  clearCards();
+  dealCards();
+}
