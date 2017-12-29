@@ -79,7 +79,8 @@ $('.deck').on('click', '.card', function() {
    if (!openCard) {
      openCard = card;
    } else {
-     if(openCard.children('i')[0].classList.value == card.children('i')[0].classList.value) {
+     incrementMoveCounter();
+     if (openCard.children('i')[0].classList.value == card.children('i')[0].classList.value) {
        matchCard(openCard);
        matchCard(card);
        if ($('.match').length === cardList.length) {
@@ -92,7 +93,6 @@ $('.deck').on('click', '.card', function() {
        }, 1000, openCard, card);
      }
      openCard = null;
-     incrementMoveCounter();
    }
  });
 
