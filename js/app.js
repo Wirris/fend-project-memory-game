@@ -65,7 +65,8 @@ var secondsPassed = 0;
 
 $('.deck').on('click', '.card', function() {
    var card = $(this);
-   if (card.hasClass('open') || card.hasClass('match')) {
+
+   if ($('.open').length > 1 || card.hasClass('open') || card.hasClass('match')) {
      return;
    }
 
