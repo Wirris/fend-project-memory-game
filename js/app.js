@@ -63,9 +63,7 @@ var openCard;
 var timer;
 var secondsPassed = 0;
 
-$('.card').on('click', function() {
-   // if first card start timer
-   // if last card end timer and show completion
+$('.deck').on('click', '.card', function() {
    var card = $(this);
    if (card.hasClass('open') || card.hasClass('match')) {
      return;
