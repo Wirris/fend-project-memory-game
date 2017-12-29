@@ -56,3 +56,56 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+var openCard;
+
+$('.card').on('click', function() {
+   // if first card start timer
+   // if last card end timer and show completion
+   var card = $(this);
+   if (card.hasClass('open') || card.hasClass('match')) {
+     return;
+   }
+
+   showCard(card);
+
+   if(!openCard) {
+     openCard = card;
+   } else {
+     if(openCard.children('i')[0].classList.value == card.children('i')[0].classList.value) {
+       matchCard(openCard);
+       matchCard(card);
+       if ($('.match').length === cardList.length) {
+         gameSuccess();
+       }
+     } else {
+       window.setTimeout(function(card1, card2) {
+         hideCard(card1);
+         hideCard(card2);
+       }, 1000, openCard, card);
+     }
+     openCard = null;
+     incrementMoveCounter();
+   }
+ });
+
+function showCard(card) {
+  card.addClass('open show');
+}
+
+function hideCard(card) {
+  card.removeClass('open show');
+}
+
+function matchCard(card) {
+  card.removeClass('open show').addClass('match');
+}
+
+function incrementMoveCounter() {
+  var counter = $('.moves');
+  var current = parseInt(counter.text());
+  counter.text(current + 1);
+}
+
+function gameSuccess() {
+  $('#successModal').modal();
+}
