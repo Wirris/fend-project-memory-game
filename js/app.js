@@ -1,7 +1,18 @@
 /*
  * Create a list that holds all of your cards
  */
+var cards = [
+  "diamond",
+  "paper-plane-o",
+  "anchor",
+  "bolt",
+  "leaf",
+  "bicycle",
+  "bomb",
+  "cube"
+];
 
+var cardList = shuffle(cards.concat(cards));
 
 /*
  * Display the cards on the page
