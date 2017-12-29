@@ -60,6 +60,7 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 var openCard;
+var timer;
 
 $('.card').on('click', function() {
    // if first card start timer
@@ -71,7 +72,11 @@ $('.card').on('click', function() {
 
    showCard(card);
 
-   if(!openCard) {
+   if (!timer) {
+     timer = window.setInterval(incrementTimer, 1000);
+   }
+
+   if (!openCard) {
      openCard = card;
    } else {
      if(openCard.children('i')[0].classList.value == card.children('i')[0].classList.value) {
@@ -109,7 +114,14 @@ function incrementMoveCounter() {
   counter.text(current + 1);
 }
 
+function incrementTimer() {
+  secondsPassed++;
+}
+
 function gameSuccess() {
+  window.clearInterval(timer);
+  $('.time-display').text(secondsPassed);
+  $('.move-display').text($('.moves').text());
   $('#successModal').modal();
 }
 
