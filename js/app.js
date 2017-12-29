@@ -61,6 +61,7 @@ function shuffle(array) {
  */
 var openCard;
 var timer;
+var secondsPassed = 0;
 
 $('.card').on('click', function() {
    // if first card start timer
