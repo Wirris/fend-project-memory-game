@@ -143,8 +143,17 @@ function incrementMoveCounter() {
 
 function updateMoves() {
   var counter = $('.moves');
-  var current = parseInt(counter.text());
-  counter.text(current + 1);
+  counter.text(moveCount);
+}
+
+function updateStars() {
+  if(moveCount > 24) {
+    $('.fa-star:eq(1)').addClass('fa-star-o');
+  } else if (moveCount > 17) {
+    $('.fa-star:eq(2)').addClass('fa-star-o');
+  } else {
+    $('.fa-star-o').removeClass('fa-star-o');
+  }
 }
 
 //keeps track of the time in seconds
