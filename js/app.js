@@ -159,6 +159,7 @@ function updateStars() {
 //keeps track of the time in seconds
 function incrementTimer() {
   secondsPassed++;
+  $('.game-timer').text(secondsPassed);
 }
 
 //removes a star from the star rating
