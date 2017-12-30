@@ -106,6 +106,7 @@ $('.deck').on('click', '.card', function() {
    if (!timer) {
      timer = window.setInterval(incrementTimer, 1000);
    }
+   $('.game-timer').text(secondsPassed);
 
 /*
  * This function is to match the pairs.
