@@ -162,9 +162,6 @@ function incrementTimer() {
   $('.game-timer').text(secondsPassed);
 }
 
-//removes a star from the star rating
-function removeStar() {
-  stars.pop();
 }
 
 // Pops up a modal giving the player their score rating, time taken and moves made
