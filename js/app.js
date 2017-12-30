@@ -136,6 +136,12 @@ function matchCard(card) {
 
 //keeps track of how many moves the player makes
 function incrementMoveCounter() {
+  moveCount++;
+  updateMoves();
+  updateStars();
+}
+
+function updateMoves() {
   var counter = $('.moves');
   var current = parseInt(counter.text());
   counter.text(current + 1);
