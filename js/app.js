@@ -180,6 +180,7 @@ function gameSuccess() {
   window.clearInterval(timer);
   $('.time-display').text(secondsPassed);
   $('.move-display').text($('.moves').text());
+  $('.stars').clone().appendTo('.modal-body');
   $('#successModal').modal();
 }
 
