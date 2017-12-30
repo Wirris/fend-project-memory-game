@@ -1,15 +1,5 @@
 /*
- * A list containing the Stars for the star rating. In this case 3. But can add more easily.
- */
-
-var stars = [
-  "star",
-  "star",
-  "star"
-];
-
-/*
- * A list that contains potential favicon icons
+ * A list that contains potential icons
  */
 
 var icons = [
@@ -30,22 +20,6 @@ var icons = [
 var cardList = icons.concat(icons);
 
 var moveCount = 0;
-
-/*
- * Assigning the star rating to the HTML index.
- */
-
-starTotal();
-function starTotal() {
-  var starHTML = [];
-
-  stars.forEach(function(){
-    starHTML.push($('<li class="star"><i class="fa fa-star"></i></li>'));
-  });
-
-  $('.stars').append(starHTML);
-}
-
 
 /*
  * Using the cardlist and shuffle function we create our random deck.
