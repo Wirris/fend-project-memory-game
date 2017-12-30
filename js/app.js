@@ -113,12 +113,12 @@ $('.deck').on('click', '.card', function() {
    }
  });
 
-//shows the card's favicon
+//shows the card's icon
 function showCard(card) {
   card.addClass('open show');
 }
 
-//removes the card's favicon
+//removes the card's icon
 function hideCard(card) {
   card.removeClass('open show');
 }
