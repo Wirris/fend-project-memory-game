@@ -26,7 +26,7 @@ var moveCount = 0;
  * Adding them to the HTML index.
  */
 
-dealCards();
+$(dealCards);
 function dealCards() {
   shuffle(cardList);
   var cardHTML = [];
