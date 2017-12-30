@@ -18,8 +18,10 @@ var icons = [
  */
 
 var cardList = icons.concat(icons);
-
 var moveCount = 0;
+var openCard;
+var timer;
+var secondsPassed = 0;
 
 /*
  * Using the cardlist and shuffle function we create our random deck.
@@ -38,24 +40,8 @@ function dealCards() {
   $('.deck').append(cardHTML);
 }
 
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
-
-var openCard;
-var timer;
-var secondsPassed = 0;
+//force restart any time by clicking the repeat icon
+$('.restart').on('click', restartGame);
 
 /*
  * Whenever the first card is clicked, it will show its icon providing:
@@ -112,6 +98,21 @@ $('.deck').on('click', '.card', function() {
      openCard = null;
    }
  });
+
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
 //shows the card's icon
 function showCard(card) {
@@ -188,9 +189,6 @@ function hideModal() {
   $('#successModal').modal('hide');
   $('.modal-body .stars').remove();
 }
-
-//force restart any time by clicking the repeat icon
-$('.restart').on('click', restartGame);
 
 //Restarts everything in the game. Without refreshing the page.
 function restartGame() {
