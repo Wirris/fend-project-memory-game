@@ -184,7 +184,12 @@ function gameSuccess() {
   $('#successModal').modal();
 }
 
-//force restart any time by clicking the repeat favicon
+function hideModal() {
+  $('#successModal').modal('hide');
+  $('.modal-body .stars').remove();
+}
+
+//force restart any time by clicking the repeat icon
 $('.restart').on('click', restartGame);
 
 //Restarts everything in the game. Without refreshing the page.
