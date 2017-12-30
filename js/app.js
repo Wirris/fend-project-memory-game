@@ -162,6 +162,11 @@ function incrementTimer() {
   $('.game-timer').text(secondsPassed);
 }
 
+function resetTimer() {
+  window.clearInterval(timer);
+  timer = null;
+  secondsPassed = 0;
+  $('.game-timer').text(0)
 }
 
 // Pops up a modal giving the player their score rating, time taken and moves made
