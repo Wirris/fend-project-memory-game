@@ -1,7 +1,4 @@
-/*
- * A list that contains potential icons
- */
-
+//Our Icons list. Potential to add more if desired.
 var icons = [
   "diamond",
   "paper-plane-o",
@@ -13,11 +10,10 @@ var icons = [
   "cube"
 ];
 
-/*
- * Doubles the icons for the Pairs game
- */
 
+ //Doubles the icons for the Pairs game
 var cardList = icons.concat(icons);
+
 var moveCount = 0;
 var openCard;
 var timer;
@@ -25,7 +21,7 @@ var secondsPassed = 0;
 
 /*
  * Using the cardlist and shuffle function we create our random deck.
- * Adding them to the HTML index.
+ * - Adding them to the HTML index.
  */
 
 $(dealCards);
@@ -142,11 +138,13 @@ function incrementMoveCounter() {
   updateStars();
 }
 
+//tracks the move counter
 function updateMoves() {
   var counter = $('.moves');
   counter.text(moveCount);
 }
 
+//changes the star rating depending on moves taken
 function updateStars() {
   if(moveCount > 24) {
     $('.fa-star:eq(1)').addClass('fa-star-o');
@@ -163,6 +161,7 @@ function incrementTimer() {
   $('.game-timer').text(secondsPassed);
 }
 
+//Specifically resets the timer
 function resetTimer() {
   window.clearInterval(timer);
   timer = null;
@@ -170,6 +169,7 @@ function resetTimer() {
   $('.game-timer').text(0)
 }
 
+//Resets the moves and stars accordingly
 function resetMoves() {
   moveCount = 0;
   updateMoves();
@@ -185,6 +185,7 @@ function gameSuccess() {
   $('#successModal').modal();
 }
 
+//Stops the stars being recorded when playing the game again
 function hideModal() {
   $('#successModal').modal('hide');
   $('.star-rating .stars').remove();
