@@ -1,6 +1,11 @@
 /*
- * Create a list that holds all of your cards
+ * A list containing the Stars for the star rating. In this case 3. But can add more easily.
  */
+
+/*
+ * A list that contains potential favicon icons
+ */
+
 var icons = [
   "diamond",
   "paper-plane-o",
@@ -11,6 +16,11 @@ var icons = [
   "bomb",
   "cube"
 ];
+
+/*
+ * Doubles the icons for the Pairs game
+ */
+
 var cardList = icons.concat(icons);
 
 var moveCount = 0;
@@ -20,7 +30,13 @@ var moveCount = 0;
  *   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
+ * Assigning the star rating to the HTML index.
  */
+/*
+ * Using the cardlist and shuffle function we create our random deck.
+ * Adding them to the HTML index.
+ */
+
 dealCards();
 function dealCards() {
   shuffle(cardList);
@@ -63,6 +79,13 @@ var openCard;
 var timer;
 var secondsPassed = 0;
 
+/*
+ * Whenever the first card is clicked, it will show its icon providing:
+ * - there isn't another card open
+ * - it isn't already openCard
+ * - it hasn't matched already
+ */
+
 $('.deck').on('click', '.card', function() {
    var card = $(this);
 
@@ -72,9 +95,25 @@ $('.deck').on('click', '.card', function() {
 
    showCard(card);
 
+/*
+ * The timer will start on the first click. Counting in Seconds.
+ */
+
    if (!timer) {
      timer = window.setInterval(incrementTimer, 1000);
    }
+
+/*
+ * This function is to match the pairs.
+ * - if the classList value is the same as the first card they match
+ * - if they match they remove the open show class, and gain the match class.
+ * - this locks them out of play
+ * - once all cards are matched, the game is complete!
+ *
+ * If the card doesn't match the openCard,
+ * - both are shown for 1 second
+ * - then they are both hidden again
+ */
 
    if (!openCard) {
      openCard = card;
@@ -96,33 +135,41 @@ $('.deck').on('click', '.card', function() {
    }
  });
 
+//shows the card's favicon
 function showCard(card) {
   card.addClass('open show');
 }
 
+//removes the card's favicon
 function hideCard(card) {
   card.removeClass('open show');
 }
 
+//removes all cards from the game (for reset)
 function clearCards() {
   $('.card').remove();
   openCard = null;
 }
 
+// locks the card out of the game when matched
 function matchCard(card) {
   card.removeClass('open show').addClass('match');
 }
 
+//keeps track of how many moves the player makes
 function incrementMoveCounter() {
   var counter = $('.moves');
   var current = parseInt(counter.text());
   counter.text(current + 1);
 }
 
+//keeps track of the time in seconds
 function incrementTimer() {
   secondsPassed++;
 }
 
+//removes a star from the star rating
+// Pops up a modal giving the player their score rating, time taken and moves made
 function gameSuccess() {
   window.clearInterval(timer);
   $('.time-display').text(secondsPassed);
@@ -130,8 +177,10 @@ function gameSuccess() {
   $('#successModal').modal();
 }
 
+//force restart any time by clicking the repeat favicon
 $('.restart').on('click', restartGame);
 
+//Restarts everything in the game. Without refreshing the page.
 function restartGame() {
   $('#successModal').modal('hide');
   $('.moves').text('0');
