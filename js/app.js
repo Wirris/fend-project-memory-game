@@ -169,6 +169,12 @@ function resetTimer() {
   $('.game-timer').text(0)
 }
 
+function resetMoves() {
+  moveCount = 0;
+  updateMoves();
+  updateStars();
+}
+
 // Pops up a modal giving the player their score rating, time taken and moves made
 function gameSuccess() {
   window.clearInterval(timer);
