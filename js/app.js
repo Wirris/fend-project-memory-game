@@ -180,14 +180,14 @@ function resetMoves() {
 function gameSuccess() {
   window.clearInterval(timer);
   $('.time-display').text(secondsPassed);
-  $('.move-display').text($('.moves').text());
-  $('.stars').clone().appendTo('.modal-body');
+  $('.move-display').text(moveCount);
+  $('.stars').clone().appendTo('.star-rating');
   $('#successModal').modal();
 }
 
 function hideModal() {
   $('#successModal').modal('hide');
-  $('.modal-body .stars').remove();
+  $('.star-rating .stars').remove();
 }
 
 //Restarts everything in the game. Without refreshing the page.
