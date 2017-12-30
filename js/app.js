@@ -194,11 +194,9 @@ $('.restart').on('click', restartGame);
 
 //Restarts everything in the game. Without refreshing the page.
 function restartGame() {
-  $('#successModal').modal('hide');
-  $('.moves').text('0');
-  window.clearInterval(timer);
-  timer = null;
-  secondsPassed = 0;
+  hideModal();
+  resetMoves();
+  resetTimer();
   clearCards();
   dealCards();
 }
